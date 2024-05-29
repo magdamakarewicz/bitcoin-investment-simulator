@@ -34,7 +34,6 @@ class CoinDeskPriceServiceTest {
 
     @Test
     public void shouldReturn227coma1808RateForBtcOn31082015() throws IOException, InvalidInputDataException {
-
         //given
         String currency = "USD";
         String date = "31-08-2015";
@@ -59,7 +58,6 @@ class CoinDeskPriceServiceTest {
 
         //then
         assertTrue(BigDecimal.valueOf(227.1808).compareTo(btcPriceFromUrl) == 0);
-
     }
 
 }
