@@ -28,7 +28,7 @@ public class BtcService implements IBtcService {
         BigDecimal btcSaleRate = btcPriceService.getCurrentPrice(currency);
         BigDecimal valueToday = btcSaleRate.multiply(btcAmount);
 
-        return valueToday;
+        return valueToday.setScale(2, RoundingMode.HALF_UP);
     }
 
 }
