@@ -8,6 +8,6 @@ public interface IBtcService {
 
     BigDecimal getBtcCalculationPrice(String date, String currency) throws InvalidInputDataException;
 
-    BigDecimal btcValueToday(String calculationDate, String currency, BigDecimal amount) throws InvalidInputDataException;
+    BigDecimal btcSaleEvent(String calculationDate, String currency, BigDecimal amount) throws InvalidInputDataException;
 
 }

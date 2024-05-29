@@ -42,11 +42,11 @@ public class Investment implements Serializable {
     private BigDecimal profitAmount;
 
     @Column(precision = 19, scale = 2)
-    private BigDecimal profitPercentage;
+    private double profitPercentage;
 
     public Investment(LocalDate calculationDate, LocalDate investmentDate, BigDecimal investmentAmount, String currency,
                       BigDecimal btcAmount, BigDecimal btcPriceOnInvestmentDate, BigDecimal btcPriceToday,
-                      BigDecimal profitAmount, BigDecimal profitPercentage) {
+                      BigDecimal profitAmount, double profitPercentage) {
         this.calculationDate = calculationDate;
         this.investmentDate = investmentDate;
         this.investmentAmount = investmentAmount;

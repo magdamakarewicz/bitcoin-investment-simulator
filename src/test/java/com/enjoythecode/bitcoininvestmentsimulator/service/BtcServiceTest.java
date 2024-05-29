@@ -35,7 +35,7 @@ class BtcServiceTest {
                 .thenReturn(BigDecimal.valueOf(68098.9496));
 
         //when
-        BigDecimal currentValue = btcService.btcValueToday("31-08-2015", "USD",
+        BigDecimal currentValue = btcService.btcSaleEvent("31-08-2015", "USD",
                 BigDecimal.valueOf(1000));
 
         //then
