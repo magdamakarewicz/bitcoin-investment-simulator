@@ -19,6 +19,11 @@ public class InvestmentService implements IInvestmentService {
         investment = Optional.ofNullable(investment)
                 .filter(x -> Objects.isNull(x.getId()))
                 .orElseThrow(() -> new RuntimeException("Bad entity"));
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return investmentDao.save(investment);
     }
 

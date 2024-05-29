@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.text.SimpleDateFormat;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 @Configuration
 public class BeansConfig {
@@ -19,6 +21,12 @@ public class BeansConfig {
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         objectMapper.setDateFormat(new SimpleDateFormat("dd-MM-yyyy"));
         return objectMapper;
+    }
+
+    @Bean
+    public Executor createExecutor() {
+        Executor executor = Executors.newFixedThreadPool(5);
+        return executor;
     }
 
 }

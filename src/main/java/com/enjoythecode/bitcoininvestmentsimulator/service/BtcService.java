@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.concurrent.Executor;
 
 @AllArgsConstructor
 @Service
@@ -16,6 +17,7 @@ public class BtcService implements IBtcService {
 
     private final IBtcPriceService btcPriceService;
     private final InvestmentService investmentService;
+    private final Executor executor;
 
     @Override
     public BigDecimal getBtcCalculationPrice(String date, String currency) throws InvalidInputDataException {
@@ -48,7 +50,7 @@ public class BtcService implements IBtcService {
                 profitPercentage
         );
 
-        investmentService.saveInvestmentEvent(investment);
+        executor.execute(() -> investmentService.saveInvestmentEvent(investment));
 
         return valueToday.setScale(2, RoundingMode.HALF_UP);
     }

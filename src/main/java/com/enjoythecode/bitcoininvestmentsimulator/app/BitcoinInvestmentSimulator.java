@@ -38,7 +38,8 @@ public class BitcoinInvestmentSimulator {
                         BigDecimal amount = BigDecimal.valueOf(scanner.nextDouble());
                         scanner.nextLine();
                         BigDecimal btcPrice = bitcoinService.getBtcCalculationPrice(date, currency);
-                        System.out.println("BTC price in " + currency + " on " + date + " was " + btcPrice);
+                        System.out.println("BTC price in " + currency + " on " + date + " was " +
+                                btcPrice.setScale(4, RoundingMode.HALF_UP));
                         BigDecimal btcAmount = amount.divide(btcPrice, 2, RoundingMode.HALF_UP);
                         System.out.println("After purchasing for the specified amount, you would have " +
                                 btcAmount.setScale(2, RoundingMode.HALF_UP) + " BTC");

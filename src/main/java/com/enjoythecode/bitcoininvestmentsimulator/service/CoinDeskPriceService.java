@@ -40,7 +40,8 @@ public class CoinDeskPriceService implements IBtcPriceService {
         }
         try {
             JsonNode specificRateNode = mainNode.get("bpi").get(urlDate);
-            return new BigDecimal(specificRateNode.asText());
+            BigDecimal pastRateInUsd = new BigDecimal(specificRateNode.asText());
+            return currency.equals("PLN") ? pastRateInUsd.multiply(exchangeRateService.getRate("USD", "PLN")) : pastRateInUsd;
         } catch (NullPointerException e) {
             throw new InvalidInputDataException("Invalid input (date too late) or there is an API issue", e);
         }
