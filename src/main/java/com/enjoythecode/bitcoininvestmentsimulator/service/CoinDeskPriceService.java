@@ -36,13 +36,13 @@ public class CoinDeskPriceService implements IBtcPriceService {
         try {
             mainNode = objectMapper.readTree(new URL(preparedPastUrl));
         } catch (IOException e) {
-            throw new InvalidInputDataException("Invalid input, please enter a later date", e);
+            throw new InvalidInputDataException("Invalid input (date too early) or there is an API issue", e);
         }
         try {
             JsonNode specificRateNode = mainNode.get("bpi").get(urlDate);
             return new BigDecimal(specificRateNode.asText());
         } catch (NullPointerException e) {
-            throw new InvalidInputDataException("Invalid input, please enter an earlier date", e);
+            throw new InvalidInputDataException("Invalid input (date too late) or there is an API issue", e);
         }
     }
 

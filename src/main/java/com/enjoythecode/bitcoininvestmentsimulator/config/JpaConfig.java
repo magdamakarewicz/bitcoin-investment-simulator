@@ -14,7 +14,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 import javax.sql.DataSource;
 
-@PropertySource("classpath:application-dev.properties")
+@PropertySource("classpath:application.properties")
 @Configuration
 public class JpaConfig {
 
