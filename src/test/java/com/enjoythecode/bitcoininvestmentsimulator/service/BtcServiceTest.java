@@ -11,6 +11,7 @@ import org.mockito.MockitoAnnotations;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.concurrent.Executor;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
@@ -22,6 +23,9 @@ class BtcServiceTest {
 
     @Mock
     InvestmentService investmentServiceMock;
+
+    @Mock
+    Executor executorMock;
 
     @InjectMocks
     BtcService btcService;
