@@ -17,6 +17,16 @@ The application relies on the CoinDesk API to fetch historical and current BTC p
 
 If you encounter any issues related to the CoinDesk API, please be aware that this is a known problem and is being investigated. Potential fixes or workarounds will be implemented as they become available.
 
+## Screenshots
+Here is a screenshot of the application in action in the development environment:
+
+![Investment Simulation](screenshots/screenshot.png)
+*Investment Simulation*
+
+## Documentation
+
+This project includes detailed documentation within the code. Comments are provided to explain the functionality of each class and method. This documentation can help you understand how the application works and guide you through extending or modifying the code if necessary.
+
 ## Technologies
 - Java 17
 - Hibernate
@@ -85,9 +95,9 @@ Build the JAR with dependencies:
 mvn package
 ```
 
-Run the JAR file with the desired profile (e.g., prod):
+Run the JAR file with the desired profile (e.g., dev):
 ```sh
-java -jar target/BitcoinInvestmentSimulator-1.0-SNAPSHOT-jar-with-dependencies.jar --spring.profiles.active=prod
+java -Dspring.profiles.active=dev -jar target/BitcoinInvestmentSimulator-1.0-SNAPSHOT-jar-with-dependencies.jar
 ```
 
 ## Environment Configuration
