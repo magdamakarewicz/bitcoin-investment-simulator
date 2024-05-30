@@ -10,6 +10,24 @@ import java.math.RoundingMode;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * BitcoinInvestmentSimulator is an application for calculating potential profits from investing in Bitcoin.
+ * <p>
+ * It uses the IBtcService interface to retrieve Bitcoin exchange rates from an external API and perform calculations
+ * based on user input. The application allows the user to select a potential purchase date, currency, and amount to
+ * invest in Bitcoin, and calculates the amount of Bitcoin they would have received on that date, as well as the current
+ * value of that Bitcoin investment in the chosen currency.
+ * <p>
+ * The main method of the application initializes an AnnotationConfigApplicationContext to load the application context,
+ * then retrieves a bean of type IBtcService from the context. It then prompts the user for input and handles exceptions
+ * using the handleException method.
+ * <p>
+ * The application is configured to scan for components in the "com.enjoythecode" package using the @ComponentScan
+ * annotation on the BitcoinInvestmentSimulator class.
+ *
+ * @author Magda M.
+ */
+
 @ComponentScan(basePackages = "com.enjoythecode")
 public class BitcoinInvestmentSimulator {
     public static void main(String[] args) {

@@ -15,6 +15,10 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Optional;
 
+/**
+ * Implementation of the {@link IBtcPriceService} interface that provides methods to get historical
+ * and current Bitcoin prices using the CoinDesk API.
+ */
 @AllArgsConstructor
 @Service
 public class CoinDeskPriceService implements IBtcPriceService {
@@ -23,6 +27,15 @@ public class CoinDeskPriceService implements IBtcPriceService {
     private ObjectMapper objectMapper;
     private IExchangeRateService exchangeRateService;
 
+    /**
+     * Gets the past Bitcoin price for a specified date and currency using the CoinDesk API.
+     *
+     * @param date     the date for which to get the exchange rate, in the format "dd-MM-yyyy".
+     * @param currency the currency in which to get the exchange rate ("PLN" or "USD").
+     * @return the past Bitcoin price for the specified date and currency, as a {@code BigDecimal}.
+     * @throws InvalidInputDataException if the input date is in the wrong format or if the CoinDesk API returns
+     *                                   an error response.
+     */
     @Override
     public BigDecimal getPastPrice(String date, String currency) throws InvalidInputDataException {
         String urlDate = null;
@@ -47,6 +60,16 @@ public class CoinDeskPriceService implements IBtcPriceService {
         }
     }
 
+    /**
+     * Gets the current Bitcoin price for a specified currency using the CoinDesk API from provided URL.
+     * Depending on the currency provided by the user (USD or PLN), it downloads the value directly from the URL
+     * (for USD) or uses the currency exchange service (for PLN), because the API does not provide rate for PLN currency.
+     *
+     * @param currency the currency in which to get the exchange rate ("PLN" or "USD").
+     * @return the current Bitcoin price for the specified currency, as a {@code BigDecimal}.
+     * @throws InvalidInputDataException if the input currency is not "PLN" or "USD", or if the CoinDesk API
+     *                                   returns an error response.
+     */
     @Override
     public BigDecimal getCurrentPrice(String currency) throws InvalidInputDataException {
         if (!currency.equals("PLN") && !currency.equals("USD")) {
